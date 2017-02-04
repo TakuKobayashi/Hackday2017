@@ -43,7 +43,7 @@ class Api_post extends MY_Controller
 
     function trtest()
     {
-        $azure_key = "d62e9976cedc4c5daf4321d0ea1af886";  // !!! TODO: secret key here !!!
+        $azure_key = "bad644fbef12420c95d27a0146704150";  // !!! TODO: secret key here !!!
         $fromLanguage = "en";  // Translator Language Codes: https://msdn.microsoft.com/en-us/library/hh456380.aspx
         $toLanguage = "ja";
         $inputStr = "AZURE - The official documentation and examples for PHP are useless.";
