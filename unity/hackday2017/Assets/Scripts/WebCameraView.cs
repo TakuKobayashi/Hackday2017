@@ -9,13 +9,8 @@ public class WebCameraView : MonoBehaviour {
 	[SerializeField] private RawImage rawImage;
 
 	void Start () {
-		string log = "";
 		WebCamDevice[] devices = WebCamTexture.devices;
 		// display all cameras
-		for (int i = 0; i < devices.Length; i++) {
-			log = "name:" + devices [i].name + "\n" + "faceing:" + devices [i].isFrontFacing + "\n";
-		}
-
 		webcamTexture = new WebCamTexture(devices[0].name, Screen.width, Screen.height, FPS);
 		rawImage.texture = webcamTexture;
 		rawImage.material.mainTexture = webcamTexture;
