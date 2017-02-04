@@ -91,14 +91,14 @@ if ( defined( 'ENVIRONMENT' ) ) {
 	switch ( ENVIRONMENT ) {
 		case 'development':
 
-			$system_path        = '/var/www/angel/ci3/system/';
-			$application_folder = '/var/www/angel/ci3/application';
+			$system_path        = '/var/www//Hackday2017/ci3/system/';
+			$application_folder = '/var/www//Hackday2017/ci3/application';
 			//          $view_folder = '/var/www/angel/ci3/application/view/';
 			break;
 
 		case 'production':
-			$system_path        = '/var/www/angel/ci3/system/';
-			$application_folder = '/var/www/angel/ci3/application';
+			$system_path        = '/var/www//Hackday2017/ci3/system/';
+			$application_folder = '/var/www//Hackday2017/ci3/application';
 //            $view_folder = '/var/www/angel/ci3/application/view/';
 			break;
 
