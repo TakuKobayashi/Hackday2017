@@ -25,6 +25,8 @@ class Api_post extends MY_Controller
         $config['upload_path'] = '/var/www/Hackday2017/htdocs/uploads/';
         $config['allowed_types'] = 'mp4|ogg|wav';
         $config['max_size'] = '300';
+        $config['file_name'] = date("YmdHis").'.wav';
+
 //        $config['max_width'] = '1024';
 //        $config['max_height'] = '768';
 
