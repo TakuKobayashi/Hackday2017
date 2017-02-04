@@ -228,7 +228,7 @@ $config['log_threshold'] = 2;
 |
 */
 //$config['log_path'] = '';
-$config['log_path'] = '/var/www/angel/ci3/application/logs/';
+$config['log_path'] = '/var/www/Hackday2017/ci3/application/logs/';
 
 /*
 |--------------------------------------------------------------------------
@@ -318,7 +318,7 @@ $config['cache_query_string'] = FALSE;
 | https://codeigniter.com/user_guide/libraries/encryption.html
 |
 */
-$config['encryption_key'] = 'ci119oxU8eSiRrCZua2n1d78Y0Dz45IQ';
+$config['encryption_key'] = '4lPiux9zJ928bLGkH20E5liX36NJY1aU';
 // http://randomkeygen.com/
 /*
 |--------------------------------------------------------------------------
@@ -372,7 +372,7 @@ $config['encryption_key'] = 'ci119oxU8eSiRrCZua2n1d78Y0Dz45IQ';
 |
 */
 $config['sess_driver'] = 'files';
-$config['sess_cookie_name'] = 'ts_session';
+$config['sess_cookie_name'] = 'ak_session';
 $config['sess_expiration'] = 7200;
 $config['sess_save_path'] = NULL;
 $config['sess_match_ip'] = FALSE;
@@ -443,8 +443,8 @@ $config['global_xss_filtering'] = FALSE;
 | 'csrf_exclude_uris' = Array of URIs which ignore CSRF checks
 */
 $config['csrf_protection'] = FALSE;
-$config['csrf_token_name'] = 'csrf_tkts_name';
-$config['csrf_cookie_name'] = 'csrf_ckts_name';
+$config['csrf_token_name'] = 'csrf_tkak_name';
+$config['csrf_cookie_name'] = 'csrf_ckak_name';
 $config['csrf_expire'] = 7200;
 $config['csrf_regenerate'] = TRUE;
 $config['csrf_exclude_uris'] = array();
