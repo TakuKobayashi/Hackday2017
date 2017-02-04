@@ -50,11 +50,11 @@ class Api_post extends MY_Controller
 
         // Get the translation
         $accessToken = $this->getToken($azure_key);
-
+        print $accessToken;
 
         $params = "text=" . urlencode($inputStr) . "&to=" . $toLanguage . "&from=" . $fromLanguage . "&appId=Bearer+" . $accessToken;
         $translateUrl = "http://api.microsofttranslator.com/v2/Http.svc/Translate?$params";
-        print $translateUrl;
+//        print $translateUrl;
 
         $curlResponse = $this->curlRequest($translateUrl);
         $translatedStr = simplexml_load_string($curlResponse);
