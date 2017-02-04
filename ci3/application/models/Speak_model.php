@@ -100,151 +100,151 @@ class Speak_model extends CI_Model
     }
 
 
-class AccessTokenAuthentication {
-
-    function getTokens2($clientKey, $authUrl){
-        try {
-//Initialize the Curl Session.
-            $ch = curl_init();
-//Set the Curl URL.
-            curl_setopt($ch, CURLOPT_URL, $authUrl . '?Subscription-Key=' . $clientKey);
-//Set HTTP POST Request.
-            curl_setopt($ch, CURLOPT_POST, TRUE);
-//Set data to POST in HTTP "POST" Operation.
-            curl_setopt($ch, CURLOPT_POSTFIELDS, ""); // $paramArr);
-//CURLOPT_RETURNTRANSFER- TRUE to return the transfer as a string of the return value of curl_exec().
-            curl_setopt ($ch, CURLOPT_RETURNTRANSFER, TRUE);
-//CURLOPT_SSL_VERIFYPEER- Set FALSE to stop cURL from verifying the peer's certificate.
-            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-//Execute the cURL session.
-            $strResponse = curl_exec($ch);
-//Get the Error Code returned by Curl.
-            $curlErrno = curl_errno($ch);
-            if($curlErrno){
-                $curlError = curl_error($ch);
-                throw new Exception($curlError);
-            }
-//Close the Curl Session.
-            curl_close($ch);
-            return $strResponse ;
-        } catch (Exception $e) {
-            return ""; // echo "Exception-".$e->getMessage();
-        }
-    }
-}
-
-/*
-* Class:AzureTranslator
-*
-* Processing the translator request.
-*/
-Class AzureTranslator {
-
-    private $clientSecret = "";
-    private $authUrl = "https://api.cognitive.microsoft.com/sts/v1.0/issueToken";
-    private $phrase = null;
-    private $sourceLang = "";
-    private $targetLang = "";
-
-    public function setPhrase ($phrase = "")
-    {
-        $this->phrase = "";
-        if (!empty($phrase))
-            $this->phrase = trim($phrase);
-    }
-
-    public function setSourceLang ($sLang = "")
-    {
-        $this->sourceLang = "";
-        if (!empty($sLang))
-            $this->sourceLang = trim($sLang);
-    }
-
-    public function setTargetLang ($tLang = "")
-    {
-        $this->targetLang = "";
-        if (!empty($tLang))
-            $this->targetLang = trim($tLang);
-    }
-
-    public function getTranslateByCurl()
-    {
-        try {
-
-//Create the AccessTokenAuthentication object.
-            $authObj = new AccessTokenAuthentication();
-
-            $accessToken = $authObj->getTokens2($this->clientSecret, $this->authUrl);
-//Create the authorization Header string.
-            $authHeader = "Authorization: Bearer ". $accessToken;
-
-            $contentType = 'text/plain';
-            $category = 'general';
-
-            $params = "text=".urlencode($this->phrase)."&to=".$this->targetLang."&from=".$this->sourceLang;
-
-            $translateUrl = "http://api.microsofttranslator.com/v2/Http.svc/Translate?$params";
-
-//Get the curlResponse.
-            $curlResponse = $this->curlRequest($translateUrl, $authHeader);
-
-//Interprets a string of XML into an object.
-            $xmlObj = simplexml_load_string($curlResponse);
-            foreach((array)$xmlObj[0] as $val){
-                $translatedStr = $val;
-            }
-
-            return $translatedStr;
-//return $curlResponse;
-
-        } catch (Exception $e) {
-            return "";
-//return $e->getMessage();
-        }
-    }
-
-    /*
-    * Create and execute the HTTP CURL request.
-    *
-    * @param string $url HTTP Url.
-    * @param string $authHeader Authorization Header string.
-    * @param string $postData Data to post.
-    *
-    * @return string.
-    *
-    */
-    function curlRequest($url, $authHeader, $postData=''){
-//Initialize the Curl Session.
-        $ch = curl_init();
-//Set the Curl url.
-        curl_setopt ($ch, CURLOPT_URL, $url);
-//Set the HTTP HEADER Fields.
-        curl_setopt ($ch, CURLOPT_HTTPHEADER, array($authHeader,"Content-Type: text/xml"));
-//CURLOPT_RETURNTRANSFER- TRUE to return the transfer as a string of the return value of curl_exec().
-        curl_setopt ($ch, CURLOPT_RETURNTRANSFER, TRUE);
-//CURLOPT_SSL_VERIFYPEER- Set FALSE to stop cURL from verifying the peer's certificate.
-        curl_setopt ($ch, CURLOPT_SSL_VERIFYPEER, False);
-        if($postData) {
-//Set HTTP POST Request.
-            curl_setopt($ch, CURLOPT_POST, TRUE);
-//Set data to POST in HTTP "POST" Operation.
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
-        }
-//Execute the cURL session.
-        $curlResponse = curl_exec($ch);
-//Get the Error Code returned by Curl.
-        $curlErrno = curl_errno($ch);
-        if ($curlErrno) {
-            $curlError = curl_error($ch);
-            throw new Exception($curlError);
-        }
-//Close a cURL session.
-        curl_close($ch);
-        return $curlResponse;
-    }
-}
-
-
+//class AccessTokenAuthentication {
+//
+//    function getTokens2($clientKey, $authUrl){
+//        try {
+////Initialize the Curl Session.
+//            $ch = curl_init();
+////Set the Curl URL.
+//            curl_setopt($ch, CURLOPT_URL, $authUrl . '?Subscription-Key=' . $clientKey);
+////Set HTTP POST Request.
+//            curl_setopt($ch, CURLOPT_POST, TRUE);
+////Set data to POST in HTTP "POST" Operation.
+//            curl_setopt($ch, CURLOPT_POSTFIELDS, ""); // $paramArr);
+////CURLOPT_RETURNTRANSFER- TRUE to return the transfer as a string of the return value of curl_exec().
+//            curl_setopt ($ch, CURLOPT_RETURNTRANSFER, TRUE);
+////CURLOPT_SSL_VERIFYPEER- Set FALSE to stop cURL from verifying the peer's certificate.
+//            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+////Execute the cURL session.
+//            $strResponse = curl_exec($ch);
+////Get the Error Code returned by Curl.
+//            $curlErrno = curl_errno($ch);
+//            if($curlErrno){
+//                $curlError = curl_error($ch);
+//                throw new Exception($curlError);
+//            }
+////Close the Curl Session.
+//            curl_close($ch);
+//            return $strResponse ;
+//        } catch (Exception $e) {
+//            return ""; // echo "Exception-".$e->getMessage();
+//        }
+//    }
+//}
+//
+///*
+//* Class:AzureTranslator
+//*
+//* Processing the translator request.
+//*/
+//Class AzureTranslator {
+//
+//    private $clientSecret = "";
+//    private $authUrl = "https://api.cognitive.microsoft.com/sts/v1.0/issueToken";
+//    private $phrase = null;
+//    private $sourceLang = "";
+//    private $targetLang = "";
+//
+//    public function setPhrase ($phrase = "")
+//    {
+//        $this->phrase = "";
+//        if (!empty($phrase))
+//            $this->phrase = trim($phrase);
+//    }
+//
+//    public function setSourceLang ($sLang = "")
+//    {
+//        $this->sourceLang = "";
+//        if (!empty($sLang))
+//            $this->sourceLang = trim($sLang);
+//    }
+//
+//    public function setTargetLang ($tLang = "")
+//    {
+//        $this->targetLang = "";
+//        if (!empty($tLang))
+//            $this->targetLang = trim($tLang);
+//    }
+//
+//    public function getTranslateByCurl()
+//    {
+//        try {
+//
+////Create the AccessTokenAuthentication object.
+//            $authObj = new AccessTokenAuthentication();
+//
+//            $accessToken = $authObj->getTokens2($this->clientSecret, $this->authUrl);
+////Create the authorization Header string.
+//            $authHeader = "Authorization: Bearer ". $accessToken;
+//
+//            $contentType = 'text/plain';
+//            $category = 'general';
+//
+//            $params = "text=".urlencode($this->phrase)."&to=".$this->targetLang."&from=".$this->sourceLang;
+//
+//            $translateUrl = "http://api.microsofttranslator.com/v2/Http.svc/Translate?$params";
+//
+////Get the curlResponse.
+//            $curlResponse = $this->curlRequest($translateUrl, $authHeader);
+//
+////Interprets a string of XML into an object.
+//            $xmlObj = simplexml_load_string($curlResponse);
+//            foreach((array)$xmlObj[0] as $val){
+//                $translatedStr = $val;
+//            }
+//
+//            return $translatedStr;
+////return $curlResponse;
+//
+//        } catch (Exception $e) {
+//            return "";
+////return $e->getMessage();
+//        }
+//    }
+//
+//    /*
+//    * Create and execute the HTTP CURL request.
+//    *
+//    * @param string $url HTTP Url.
+//    * @param string $authHeader Authorization Header string.
+//    * @param string $postData Data to post.
+//    *
+//    * @return string.
+//    *
+//    */
+//    function curlRequest($url, $authHeader, $postData=''){
+////Initialize the Curl Session.
+//        $ch = curl_init();
+////Set the Curl url.
+//        curl_setopt ($ch, CURLOPT_URL, $url);
+////Set the HTTP HEADER Fields.
+//        curl_setopt ($ch, CURLOPT_HTTPHEADER, array($authHeader,"Content-Type: text/xml"));
+////CURLOPT_RETURNTRANSFER- TRUE to return the transfer as a string of the return value of curl_exec().
+//        curl_setopt ($ch, CURLOPT_RETURNTRANSFER, TRUE);
+////CURLOPT_SSL_VERIFYPEER- Set FALSE to stop cURL from verifying the peer's certificate.
+//        curl_setopt ($ch, CURLOPT_SSL_VERIFYPEER, False);
+//        if($postData) {
+////Set HTTP POST Request.
+//            curl_setopt($ch, CURLOPT_POST, TRUE);
+////Set data to POST in HTTP "POST" Operation.
+//            curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
+//        }
+////Execute the cURL session.
+//        $curlResponse = curl_exec($ch);
+////Get the Error Code returned by Curl.
+//        $curlErrno = curl_errno($ch);
+//        if ($curlErrno) {
+//            $curlError = curl_error($ch);
+//            throw new Exception($curlError);
+//        }
+////Close a cURL session.
+//        curl_close($ch);
+//        return $curlResponse;
+//    }
+//}
+//
+//
 
 }
 
