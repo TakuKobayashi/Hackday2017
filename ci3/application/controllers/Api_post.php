@@ -30,7 +30,7 @@ class Api_post extends MY_Controller
 
         $this->load->library('upload', $config);
 
-        if (!$this->upload->do_upload()) {
+        if (!$this->upload->do_upload('upload')) {
             $error = array('error' => $this->upload->display_errors());
             print_r( $error);
 //            $this->load->view('upload_form', $error);
