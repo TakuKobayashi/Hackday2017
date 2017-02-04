@@ -36,7 +36,7 @@ class Api_post extends MY_Controller
 
         if (!$this->upload->do_upload('upload')) {
             $error = array('error' => $this->upload->display_errors());
-            print json_encode($error);
+            print json_encode($error, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 //            $this->load->view('upload_form', $error);
         } else {
 //            $data = array('upload_data' => $this->upload->data());
@@ -48,7 +48,7 @@ class Api_post extends MY_Controller
                 "conv_file" => sprintf("http://kimini.xyz/convert/%s",$file_name),
             );
 
-            print json_encode($array);
+            print json_encode($array, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 
 //            $this->load->view('upload_success', $data);
         }
