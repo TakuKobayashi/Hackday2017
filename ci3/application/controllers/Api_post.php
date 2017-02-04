@@ -32,18 +32,19 @@ class Api_post extends MY_Controller
 
         if (!$this->upload->do_upload()) {
             $error = array('error' => $this->upload->display_errors());
-
-            $this->load->view('upload_form', $error);
+            print $error;
+//            $this->load->view('upload_form', $error);
         } else {
             $data = array('upload_data' => $this->upload->data());
+            print "OK";
 
-            $this->load->view('upload_success', $data);
+//            $this->load->view('upload_success', $data);
         }
     }
 
     function trtest()
     {
-        $azure_key = "bad644fbef12420c95d27a0146704150";  // !!! TODO: secret key here !!!
+        $azure_key = "80ff081d32654875b59d1a63e6ada561";  // !!! TODO: secret key here !!!
         $fromLanguage = "en";  // Translator Language Codes: https://msdn.microsoft.com/en-us/library/hh456380.aspx
         $toLanguage = "ja";
         $inputStr = "AZURE - The official documentation and examples for PHP are useless.";
