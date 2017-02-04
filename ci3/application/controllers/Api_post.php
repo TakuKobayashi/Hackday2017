@@ -22,10 +22,12 @@ class Api_post extends MY_Controller
 
     function up_voice()
     {
+
+        $file_name = date("YmdHis").'.wav';
         $config['upload_path'] = '/var/www/Hackday2017/htdocs/uploads/';
         $config['allowed_types'] = 'mp4|ogg|wav';
         $config['max_size'] = '300';
-        $config['file_name'] = date("YmdHis").'.wav';
+        $config['file_name'] = $file_name;
 
 //        $config['max_width'] = '1024';
 //        $config['max_height'] = '768';
@@ -34,11 +36,19 @@ class Api_post extends MY_Controller
 
         if (!$this->upload->do_upload('upload')) {
             $error = array('error' => $this->upload->display_errors());
-            print_r( $error);
+            print json_encode($error);
 //            $this->load->view('upload_form', $error);
         } else {
-            $data = array('upload_data' => $this->upload->data());
-            print_r( $data);
+//            $data = array('upload_data' => $this->upload->data());
+//            print_r( $data);
+            $array = array(
+                "base_text"=>"ようこそ世界",
+                "conv_text"=>"hello world",
+                "base_file" => sprintf("http://kimini.xyz/uploads/%s",$file_name),
+                "conv_file" => sprintf("http://kimini.xyz/convert/%s",$file_name),
+            );
+
+            print json_encode($array);
 
 //            $this->load->view('upload_success', $data);
         }
