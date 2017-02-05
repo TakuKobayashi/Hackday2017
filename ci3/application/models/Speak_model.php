@@ -60,7 +60,7 @@ class Speak_model extends CI_Model
 //        $response = @file_get_contents($url);
         //xmlファイルを読み込み、配列へ変換
 //        $xml = simplexml_load_file($url);
-        $response = @file_get_contents($url);
+        $response = file_get_contents($url);
 //        print $url;
 //        $response = json_decode(json_encode($xml), true);
 
