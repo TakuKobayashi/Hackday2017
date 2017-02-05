@@ -41,14 +41,14 @@ class Api_post extends MY_Controller
 
         $cv_w = $this->speakModel->trgr($word);
         // 音声変換
-        $voice = $this->speakModel->getVoiceInfo($cv_w);
-        @file_put_contents(sprintf("/var/www/Hackday2017/htdocs/convert/%s",$file_name),$voice);
+//        $voice = $this->speakModel->getVoiceInfo($cv_w);
+//        @file_put_contents(sprintf("/var/www/Hackday2017/htdocs/convert/%s",$file_name),$voice);
 
         $array = array(
             "base_text"=>$word,
             "conv_text"=>$cv_w,
 //          "base_file" => sprintf("http://kimini.xyz/uploads/%s",$file_name),
-            "conv_file" => sprintf("http://kimini.xyz/convert/%s",$file_name),
+          "conv_file" => sprintf("http://kimini.xyz/convert/%s",$file_name),
         );
 
         file_get_contents("http://kimini.xyz/tw.php?wd=".urlencode($cv_w));
