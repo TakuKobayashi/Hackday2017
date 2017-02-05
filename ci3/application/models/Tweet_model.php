@@ -9,10 +9,10 @@
 class Tweet_model extends CI_Model
 {
 
-    private static $CONSUMER_KEY = 'ywtz6wgeoi7RuQVbnYv5TF1ks';
-    private static $CONSUMER_SECRET = 'LkmIeClt6KLGL2S6wPqZw1yTucAMm7OQdXfzglGTo1aLPuztLi';
-    private static $ACCESS_TOKEN = '取得したトークン';
-    private static $ACCESS_TOKEN_SECRET = '取得したトークンシークレット';
+    private static $CONSUMER_KEY = 'KfgLWriWZvDiSHYqd9ySOWGPc';
+    private static $CONSUMER_SECRET = 'Todmr12GNxbYftD3Jn1CdDRbfc7djik83f4T0f2Ru9s0mkkHXB';
+    private static $ACCESS_TOKEN = '828022796324253697-JvJkX9mJxZ4LiiGVVEB31O2KManqFES';
+    private static $ACCESS_TOKEN_SECRET = 'igQ63MWr3jYGmvQWH8PV42AZ4LBVBHsfKftyGCE1NiuRM';
     private static $TWITTER_API = 'https://api.twitter.com/1.1/statuses/update.json';
 
 

@@ -13,6 +13,8 @@ class Api_post extends MY_Controller
     {
         parent::__construct();
         $this->load->helper(array('form', 'url'));
+
+        $this->load->model('Speak_model', 'speakModel');
     }
 
     function index()
@@ -58,6 +60,12 @@ class Api_post extends MY_Controller
     function twit_call(){
         print "OK";
     }
+
+    function voice(){
+        $word = "はろーわーるど";
+        $voice = $this->speakModel->getVoiceInfo($word);
+    }
+
 
     function trtest()
     {

@@ -22,6 +22,54 @@ class Speak_model extends CI_Model
     // KEY2
     var $sp2_api_key_2 = 'a5e2a58511c744a2be40911463e77ac3';
 
+
+    public function getVoiceInfo($word = "", $userId = 0)
+    {
+
+        $data = array(
+            '&speaker_id=1',
+            '&speaker_id=2',
+            '&speaker_id=6',
+            '&speaker_id=24',
+        );
+
+        $ai_user_name = "MA11WebAPIJ";
+        $ai_pass_word = "tRWjUhJB";
+        //
+        $volume = "2.0";
+
+        $url = 'http://webapi.aitalk.jp/webapi/v1/ttsget.php';
+        $url .= '?username=' . $ai_user_name;
+        $url .= '&password=' . $ai_pass_word;
+        $url .= '&text=' . rawurlencode($word);// 日本語の場合UTF-8エンコード。
+        $url .= '&volume=' . $volume;
+//        $url .= '&ext=ogg'; // ogg、aac、wavの中から選択。既定値はogg。
+//        $url .= '&ext=aac'; // ogg、aac、wavの中から選択。既定値はogg。
+        $url .= '&ext=wav'; // ogg、aac、wavの中から選択。既定値はogg。
+
+        mt_srand($userId + date("Ymd"));
+        $lucky = mt_rand(0, count($data) - 1);
+        $url .= $data[$lucky]; //
+
+//        $url .= '&joy=1.0'; // よろこび　範囲は 0.0～1.0。省略時は 0.0。感情 対応 話者 のみ 有
+//        $url .= '&anger=1.0'; // 怒り　範囲は 0.0～1.0。省略時は 0.0。感情 対応 話者 のみ 有
+//        $url .= '&sadness=1.0'; // 悲しみ　範囲は 0.0～1.0。省略時は 0.0。感情 対応 話者 のみ 有
+
+//        $response = @file_get_contents($url);
+        //xmlファイルを読み込み、配列へ変換
+//        $xml = simplexml_load_file($url);
+        $response = @file_get_contents($url);
+//        print $url;
+//        $response = json_decode(json_encode($xml), true);
+
+//        if (strpos($response, "?xml")) {
+//            $response = "";
+//        }
+        return $response;
+
+    }
+
+
     /**
      * Bing Text To Speech API
      */
