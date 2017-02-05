@@ -15,6 +15,7 @@ class Api_post extends MY_Controller
         $this->load->helper(array('form', 'url'));
 
         $this->load->model('Speak_model', 'speakModel');
+        $this->load->model('Tweet_model', 'tweetModel');
     }
 
     function index()
@@ -54,6 +55,12 @@ class Api_post extends MY_Controller
 
 //            $this->load->view('upload_success', $data);
         }
+    }
+
+
+    function twit(){
+        $word = "";
+        $voice = $this->tweetModel->post($word);
     }
 
 

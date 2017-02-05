@@ -16,12 +16,16 @@ class Tweet_model extends CI_Model
     private static $TWITTER_API = 'https://api.twitter.com/1.1/statuses/update.json';
 
 
-    public function post(){
+    public function post($word = ""){
 
         require_once('/var/www/Hackday2017/ci3/twitteroauth-master/src/TwitterOAuth.php');
 
         // 投稿する文言
-        $postMsg = 'こんにちは世界';
+        if($word == ""){
+            $postMsg = 'こんにちは世界';
+        }else{
+            $postMsg = $word;
+        }
 
         // OAuthオブジェクト生成
         $toa = new TwitterOAuth(self::$CONSUMER_KEY, self::$CONSUMER_SECRET, self::$ACCESS_TOKEN, self::$ACCESS_TOKEN_SECRET);
