@@ -25,7 +25,8 @@ class Api_post extends MY_Controller
 
     function conv(){
         $key = 'AIzaSyDRC0-wdBWTd3-OB122Vx9pXFB8SXs0ifY';
-       $res = sprintf('https://www.googleapis.com/language/translate/v2?key=%s&q=hello&source=en&target=ja',$key);
+       $url = sprintf('https://www.googleapis.com/language/translate/v2?key=%s&q=hello&source=en&target=ja',$key);
+        $res =  file_get_contents($url);
         print_r($res);
     }
 
