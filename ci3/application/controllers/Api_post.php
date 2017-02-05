@@ -39,9 +39,11 @@ class Api_post extends MY_Controller
 
         $file_name = date("YmdHis").'.wav';
 
+        $cv_w = $this->speakModel->trgr($word);
+
         $array = array(
             "base_text"=>$word,
-            "conv_text"=>"hello world",
+            "conv_text"=>$cv_w,
 //          "base_file" => sprintf("http://kimini.xyz/uploads/%s",$file_name),
             "conv_file" => sprintf("http://kimini.xyz/convert/%s",$file_name),
         );

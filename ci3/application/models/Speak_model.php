@@ -74,6 +74,48 @@ class Speak_model extends CI_Model
     }
 
 
+    public function blue_s2t(){
+
+//            "url": "https://stream.watsonplatform.net/speech-to-text/api",
+//                "username": "7d2d0b8b-6cca-4bfc-a029-f99455bb5c9c",
+//             "password": "igvl6yEvPveJ"
+
+        $url = 'https://stream.watsonplatform.net/speech-to-text/api';
+
+    }
+
+    public function google_s2t(){
+
+        require '/var/www/Hackday2017/ci3/application/third_party/google_speech.php';
+
+        $s = new cgoogle_speech('AIzaSyDRC0-wdBWTd3-OB122Vx9pXFB8SXs0ifY');
+
+        $output = $s->process('@test.flac', 'en-US', 8000);
+
+        print_r($output);
+
+    }
+
+    /**
+     * @param string $word
+     * @return string
+     */
+    public function trgr($word=""){
+
+        $trans = "";
+        $target = "en";
+
+        $key = 'AIzaSyDRC0-wdBWTd3-OB122Vx9pXFB8SXs0ifY';
+        $url = sprintf('https://www.googleapis.com/language/translate/v2?key=%s&q=%s&source=ja&target=%s',$key,$word,$target);
+        $res = json_decode(@file_get_contents($url),true);
+        //print_r(json_decode($res,true));
+        if(isset($res["data"]["translations"][0]["translatedText"])){
+            $trans =  $res["data"]["translations"][0]["translatedText"];
+        }
+        return $trans;
+    }
+
+
     /**
      * Bing Text To Speech API
      */
