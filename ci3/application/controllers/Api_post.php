@@ -54,6 +54,11 @@ class Api_post extends MY_Controller
         }
     }
 
+
+    function twit_call(){
+        print "OK";
+    }
+
     function trtest()
     {
         $azure_key = "80ff081d32654875b59d1a63e6ada561";  // !!! TODO: secret key here !!!
