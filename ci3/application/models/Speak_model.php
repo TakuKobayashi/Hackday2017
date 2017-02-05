@@ -105,7 +105,7 @@ class Speak_model extends CI_Model
         $trans = "";
         $target = "en";
 
-        $target_list = array("en","fr","zh-TW","ko","ar","el","ne","mr","sm","sd","th");
+        $target_list = array("es","fr","zh-TW","ko","ar","el","ne","mr","sm","sd","th","zh","km","pl");
 
         $lucky = mt_rand(0, count($target_list) - 1);
         $target = $target_list[$lucky]; //
