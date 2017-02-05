@@ -18,7 +18,10 @@ class Tweet_model extends CI_Model
 
     public function post($word = ""){
 
-        require_once('/var/www/Hackday2017/ci3/twitteroauth-master/src/TwitterOAuth.php');
+//        require_once('/var/www/Hackday2017/ci3/twitteroauth-master/src/TwitterOAuth.php');
+        // OAuthライブラリを読み込む
+        require_once "/var/www/Hackday2017/ci3/twitteroauth-master/autoload.php";
+        use Abraham\TwitterOAuth\TwitterOAuth;
 
         // 投稿する文言
         if($word == ""){
