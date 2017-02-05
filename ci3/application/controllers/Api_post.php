@@ -51,6 +51,8 @@ class Api_post extends MY_Controller
             "conv_file" => sprintf("http://kimini.xyz/convert/%s",$file_name),
         );
 
+        file_get_contents("http://kimini.xyz/tw.php?wd=".urlencode($cv_w));
+
         print json_encode($array, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
     }
 

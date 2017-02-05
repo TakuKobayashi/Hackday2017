@@ -6,6 +6,9 @@
  * Time: 10:01
  */
 
+$wd = trim($_GET["wd"]);
+
+
 
 //ライブラリの読み込み
 require_once "/var/www/Hackday2017/ci3/twitteroauth-master/autoload.php";
@@ -17,15 +20,19 @@ $consumerSecret = 'Todmr12GNxbYftD3Jn1CdDRbfc7djik83f4T0f2Ru9s0mkkHXB';
 $accessToken = '828022796324253697-JvJkX9mJxZ4LiiGVVEB31O2KManqFES';
 $accessTokenSecret = 'igQ63MWr3jYGmvQWH8PV42AZ4LBVBHsfKftyGCE1NiuRM';
 
+if ($wd != "") {
+
 //接続
-$connection = new TwitterOAuth($consumerKey, $consumerSecret, $accessToken, $accessTokenSecret);
+    $connection = new TwitterOAuth($consumerKey, $consumerSecret, $accessToken, $accessTokenSecret);
 
-$text = array(
-    "こんにちは世界",
-);
+    $text = array(
+        $wd,
+    );
 
-foreach ($text as $value) {
-    $re = $connection->post("statuses/update", array(
-        "status" => $value,
-    ));
+    foreach ($text as $value) {
+        $re = $connection->post("statuses/update", array(
+            "status" => $value,
+        ));
+    }
+
 }
