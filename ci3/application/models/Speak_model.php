@@ -105,6 +105,11 @@ class Speak_model extends CI_Model
         $trans = "";
         $target = "en";
 
+        $target_list = array("en","fr","zh-TW","kr","ru");
+
+        $lucky = mt_rand(0, count($target_list) - 1);
+        $target = $target_list[$lucky]; //
+
         $key = 'AIzaSyDRC0-wdBWTd3-OB122Vx9pXFB8SXs0ifY';
         $url = sprintf('https://www.googleapis.com/language/translate/v2?key=%s&q=%s&source=ja&target=%s',$key,$word,$target);
         $res = json_decode(@file_get_contents($url),true);
