@@ -33,12 +33,14 @@ class Speak_model extends CI_Model
             '&speaker_id=24',
         );
 
-        $ai_user_name = "MA11WebAPIJ";
-        $ai_pass_word = "tRWjUhJB";
+//        $ai_user_name = "MA11WebAPIJ";
+//        $ai_pass_word = "tRWjUhJB";
+        $ai_user_name = "AIevt_SCA17";
+        $ai_pass_word = "Tp5enqtz";
         //
         $volume = "2.0";
 
-        $url = 'http://webapi.aitalk.jp/webapi/v1/ttsget.php';
+        $url = 'http://webapi.aitalk.jp/webapi/v2/ttsget.php';
         $url .= '?username=' . $ai_user_name;
         $url .= '&password=' . $ai_pass_word;
         $url .= '&text=' . rawurlencode($word);// 日本語の場合UTF-8エンコード。
