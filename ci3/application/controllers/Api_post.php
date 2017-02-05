@@ -79,7 +79,7 @@ class Api_post extends MY_Controller
     function voice(){
         $word = "はろーわーるど";
         $voice = $this->speakModel->getVoiceInfo($word);
-        file_put_contents(sprintf("http://kimini.xyz/convert/%s.wav",date("YmdHis")),$voice);
+        file_put_contents(sprintf("/var/www/Hackday2017/htdocs/convert/%s.wav",date("YmdHis")),$voice);
     }
 
 
