@@ -21,7 +21,7 @@ class Tweet_model extends CI_Model
 //        require_once('/var/www/Hackday2017/ci3/twitteroauth-master/src/TwitterOAuth.php');
         // OAuthライブラリを読み込む
         require_once "/var/www/Hackday2017/ci3/twitteroauth-master/autoload.php";
-        use Abraham\TwitterOAuth\TwitterOAuth;
+//        use Abraham\TwitterOAuth\TwitterOAuth;
 
         // 投稿する文言
         if($word == ""){
