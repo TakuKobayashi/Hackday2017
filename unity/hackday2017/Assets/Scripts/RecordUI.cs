@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
+using System.IO;
 
 public class RecordUI : MonoBehaviour {
 	[SerializeField] private AudioSource voiceSource;
@@ -13,11 +15,19 @@ public class RecordUI : MonoBehaviour {
 			isRecording = false;
 			buttonText.text = "再生";
 			Microphone.End (Microphone.devices [0]);
-			SaveWavFile.Save ("fileName", voiceSource.clip);
+			string filename = Guid.NewGuid ().ToString ();
+			if (!filename.ToLower().EndsWith(".wav")) {
+				filename += ".wav";
+			}
+
+			var filepath = Path.Combine(Application.persistentDataPath, filename);
+
+			SaveWavFile.Save (filename, voiceSource.clip);
+			StartCoroutine(DownloadRequest.Instance.UploadSound (filename, filepath));
 		}else{
 			isRecording = true;
 			buttonText.text = "停止";
-			voiceSource.clip = Microphone.Start (Microphone.devices [0], false, 10, 44100);
+			voiceSource.clip = Microphone.Start (Microphone.devices [0], true, 5, 44100);
 		}
 	}
 }

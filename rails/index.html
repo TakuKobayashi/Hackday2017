@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Voice Recognition</title>
+    <script>
+      window.SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
+      var recognition = new webkitSpeechRecognition();
+      recognition.continuous = true;
+      recognition.interimResults = true;
+      recognition.lang = 'ja';
+      // 録音終了時トリガー
+      recognition.addEventListener('result', function(event){
+        var text = event.results.item(0).item(0).transcript;
+        $("#result_text").val(text);
+      }, false);
+
+     // 録音開始
+     function record(){
+       recognition.start();
+     }
+     </script>
+  </head>
+  <body>
+    <h3>Web Speech APIサンプル</h3>
+    <textarea id="result_text" cols="100" rows="10"></textarea>
+    <br />
+    <input type="button" onClick="record()" value="録音開始" />
+  </body>
+</html>
