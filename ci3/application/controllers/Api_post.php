@@ -40,6 +40,9 @@ class Api_post extends MY_Controller
         $file_name = date("YmdHis").'.wav';
 
         $cv_w = $this->speakModel->trgr($word);
+        // 音声変換
+        $voice = $this->speakModel->getVoiceInfo($cv_w);
+        @file_put_contents(sprintf("/var/www/Hackday2017/htdocs/convert/%s",$file_name),$voice);
 
         $array = array(
             "base_text"=>$word,
