@@ -51,6 +51,8 @@ class Speak_model extends CI_Model
         $lucky = mt_rand(0, count($data) - 1);
         $url .= $data[$lucky]; //
 
+        print $url;
+
 //        $url .= '&joy=1.0'; // よろこび　範囲は 0.0～1.0。省略時は 0.0。感情 対応 話者 のみ 有
 //        $url .= '&anger=1.0'; // 怒り　範囲は 0.0～1.0。省略時は 0.0。感情 対応 話者 のみ 有
 //        $url .= '&sadness=1.0'; // 悲しみ　範囲は 0.0～1.0。省略時は 0.0。感情 対応 話者 のみ 有
