@@ -30,6 +30,24 @@ class Api_post extends MY_Controller
         print_r(json_decode($res,true));
     }
 
+    function up_txt($word=""){
+
+        $something = $this->input->get('word');
+        if(strlen($something) > 2){
+            $word = $something;
+        }
+
+        $file_name = date("YmdHis").'.wav';
+
+        $array = array(
+            "base_text"=>$word,
+            "conv_text"=>"hello world",
+//          "base_file" => sprintf("http://kimini.xyz/uploads/%s",$file_name),
+            "conv_file" => sprintf("http://kimini.xyz/convert/%s",$file_name),
+        );
+
+        print json_encode($array, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    }
 
     function up_voice()
     {
