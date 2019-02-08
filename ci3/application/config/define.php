@@ -62,11 +62,11 @@ define('FACE_CONFIDENCE_RESULT_AGE', 9); // 9: 年齢
 //define('MM_CACHE_DEFAULT_TTL', MM_CACHE_FIVE_MINUTE); // TTL未指定時に入れられるTTL(秒)
 
 //// LINE 旧仕様
-//define("LINE_BOT_CHANNEL_ID","1463695947");
+//define("LINE_BOT_CHANNEL_ID","-----");
 //// LINE:チャンネルシークレット
-//define("LINE_BOT_CHANNEL_SECRET","3d7c7f908d90e7c47488a3442adb7d31");
+//define("LINE_BOT_CHANNEL_SECRET","----------------------------");
 //// LINE:MID
-//define("LINE_BOT_MID","ud285f07e6b397e1cc9b7c3d9c3738c69");
+//define("LINE_BOT_MID","----------------------------");
 
 
 
@@ -88,14 +88,14 @@ define('LIKELIHOOD_LIKELY', "LIKELY"); //  LIKELY	高いレベル。
 define('LIKELIHOOD_VERY_LIKELY', "VERY_LIKELY"); // VERY_LIKELY	非常に高いレベル。
 
 //
-define( "BEAUTY_KEY", "8be1673387fcd4ab" );
-define( "VC_PDB_KEY_BEAUTY", "1-cc0d90e2d044141dd98ad64c0a132a5" );
+define( "BEAUTY_KEY", "---------------------" );
+define( "VC_PDB_KEY_BEAUTY", "----------------------------" );
 
 // betaFace
-define( "BETAFACE_API_KEY", "d45fd466-51e2-4701-8da8-04351c872236" );
-define( "BETAFACE_SECRET", "171e8465-f548-401d-b63b-caf0dc28df5f" );
+define( "BETAFACE_API_KEY", "---------------" );
+define( "BETAFACE_SECRET", "--------------------------" );
 
 // MS project oxford
-define( "FACE_KEY_PRIME", "e611cbef8b7449ba96133d9126c1ce30" );
-define( "FACE_KEY_SECOND", "1d09495e8b0846ecba19b8bb24c0aff7" );
+define( "FACE_KEY_PRIME", "----------------------------" );
+define( "FACE_KEY_SECOND", "----------------------------" );
 
